@@ -2,6 +2,6 @@ function id(x) {
     return x
 }
 
-function getlenght(str){
+function getLength(str){
     return length(str)
 }
