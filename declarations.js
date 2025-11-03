@@ -1,27 +1,23 @@
-const escapeStr = /*"'\\/\"\'"*/ "\`\\/\"'"
-const arr = [4, '2']
-const obj = {str: "yoyo", num : 17, bool : true, undef : undefined}
-const nested = {arr : [4, undefined, '2'], obj : {str : "test", num : 7, bool : false}}
+// escapeStr: contains special characters `, \, /, " and '
+const escapeStr = "` \\ / \" '";
 
-//Object.freeze(nested)
-deepFreeze(nested)
-Object.freeze(arr)
-Object.freeze(obj)
-Object.deepFreeze()
-console.log(escapeStr)
+// arr: an array containing 4 and '2'
+const arr = Object.freeze([4, '2']);
 
-function deepFreeze(object) {
-  // Retrieve the property names defined on object
-  const propNames = Reflect.ownKeys(object);
+// obj: an object with primitive values and a nested frozen structure
+const obj = Object.freeze({
+  str: "a string value",
+  num: 42,
+  bool: true,
+  undef: undefined})
 
-  // Freeze properties before freezing self
-  for (const name of propNames) {
-    const value = object[name];
+const nested = Object.freeze({
+    arr: Object.freeze([4, undefined, '2']),
+    obj: Object.freeze({
+      str: "nested string",
+      num: 7,
+      bool: false
 
-    if ((value && typeof value === "object") || typeof value === "function") {
-      deepFreeze(value);
-    }
-  }
+    }) 
+})
 
-  return Object.freeze(object);
-}
