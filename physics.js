@@ -4,8 +4,9 @@ function getAcceleration(properties){
     }else if (properties['Δt'] >  0 && properties['Δv']>0){
         return properties['Δv']/properties['Δt']
     }else if (properties['t'] >  0 && properties['d']>0){
-        return properties['d']*2 / properties['t']*properties['t']
+        return (properties['d']*2) / (properties['t']*properties['t'])
     }else {
         return "impossible"
     }
 }
+console.log(getAcceleration({ d: 10, t: 2, Δv: 100 }));
