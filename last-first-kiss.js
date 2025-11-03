@@ -5,6 +5,6 @@ function last(array){
     return array[array.length - 1]
 }
 function kiss(array){
-    const resurlt = [array[0], array[array.length - 1]]
+    const resurlt = [array[array.length - 1], array[0]]
     return resurlt
 }
