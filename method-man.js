@@ -5,15 +5,15 @@ function sentence(arrStr){
     return arrStr.join(" ")
 }
 function yell(str){
-    return str.toUpperCase  
+    return str.toUpperCase() 
 }
 
 function whisper(str){
-    return '*'+str.toLowerCase + '*'
+    return '*'+str.toLowerCase() + '*'
 }
 function capitalize(str){
-    str = str.toLowerCase
+    str = str.toLowerCase()
     let arr = str.split("")
-    arr[0] = arr[0].toUpperCase
+    arr[0] = arr[0].toUpperCase()
     return arr.join("")
 }
