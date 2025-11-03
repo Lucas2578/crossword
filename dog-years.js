@@ -9,7 +9,7 @@ const planet = {
         neptune : 164.79132
     }
 function dogYears(Planet, second){
-    return second/31557600 * 7 * planet[Planet]
+    return Math.round(second/31557600 * 7 * planet[Planet]*100)/100
 }
 
-console.log(Math.round(dogYears('earth', 1000000000)*100)/100)
+//console.log(Math.round(dogYears('earth', 1000000000)*100)/100)
