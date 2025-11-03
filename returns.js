@@ -3,5 +3,5 @@ function id(x) {
 }
 
 function getLength(str){
-    return length(str)
+    return str.length
 }
