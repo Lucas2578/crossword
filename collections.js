@@ -38,7 +38,7 @@ function strToObj(str) {
 }
 
 function superTypeOf(value) {
-  if (value === null) return 'Null';
+  if (value === null) return 'null';
   if (Array.isArray(value)) return 'Array';
   if (value instanceof Set) return 'Set';
   if (value instanceof Map) return 'Map';
