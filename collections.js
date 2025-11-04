@@ -46,6 +46,6 @@ function superTypeOf(value) {
   if (value instanceof RegExp) return 'RegExp';
   if (typeof value === 'object') return 'Object';
   return typeof value === 'undefined'
-    ? 'Undefined'
+    ? 'undefined'
     : value.constructor?.name || typeof value;
 }
