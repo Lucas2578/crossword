@@ -38,11 +38,14 @@ function strToObj(str) {
 }
 
 function superTypeOf(value) {
-  if (value === null) return 'null';
+  if (value === null) return 'Null';
   if (Array.isArray(value)) return 'Array';
   if (value instanceof Set) return 'Set';
   if (value instanceof Map) return 'Map';
   if (value instanceof Date) return 'Date';
   if (value instanceof RegExp) return 'RegExp';
-  return typeof value;
+  if (typeof value === 'object') return 'Object';
+  return typeof value === 'undefined'
+    ? 'Undefined'
+    : value.constructor?.name || typeof value;
 }
