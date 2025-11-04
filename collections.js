@@ -26,6 +26,8 @@ function objToMap (obj) {
     return new Map(Object.entries(obj))
 }
 function arrToObj (arr) {
+const obj = {};
+
 arr.forEach((value, index) => {
     obj[index] = value;
   })
