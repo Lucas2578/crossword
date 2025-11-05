@@ -3,7 +3,7 @@ function repeat(str, num){
     let final 
     while(i !== num){
         final += str
-
+        i++
     }
     return final
 }
