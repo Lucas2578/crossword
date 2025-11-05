@@ -16,6 +16,8 @@ function keepLast (str) {
 function keepFirstLast (str) {
     // Use Array.slice: split the string to an array, take first 2 and last 2,
     // then join them back into a string.
+    // If the string is very short, return it unchanged to avoid duplication.
+    if (str.length <= 4) return str
     const chars = str.split('')
     const firstTwo = chars.slice(0, 2)
     const lastTwo = chars.slice(-2)
