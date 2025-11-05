@@ -12,6 +12,10 @@ function slice (strArr, Sindex, Eindex = strArr.length){
         final += strArr[i]
         i++
     }
+
+    if (Array.isArray(strArr)){
+        return final.join("")
+    }
     return final
 }
 
