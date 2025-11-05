@@ -1,62 +1,52 @@
-function trunc (num) {
-    let entier = 0;
-    if (num >= 0) {
-      while (entier <= num) {
-        entier = entier + 1;
-      }
+function trunc(num) {
+  let entier = 0;
+  
+  if (num >= 0) {
+    while (entier <= num) {
+      entier = entier + 1;
+    }
+    entier = entier - 1;
+  } else {
+    while (entier > num) {
       entier = entier - 1;
-    } else {
-      while (entier > num) {
-        entier = entier - 1;
-      }
     }
-    return entier
-}
-function round (num) {
-    if (num>0){
-        let result =  num - trunc(num)
-        if (result < 0.5){
-            return trunc(num)
-        }else{
-            return trunc(num)+1
-        }
-    }else {
-        let result = num - trunc(num)
-        if (result < -0.5){
-            return trunc(num) -1
-        }else{
-            return trunc(num)
-        }
-    }
-    
+  }
+  return entier;
 }
 
-function ceil (num){
-    let result =  num - trunc(num)
-    if (num>0){
-        if (result > 0){
-            return trunc(num)+1
-        }else {
-            trunc(num)
-        }
-    }else {
-        return trunc(num)
-    }
+function round(num) {
+  let t = trunc(num);
+  let fractional = num - t;
+
+  if (num >= 0) {
+    if (fractional >= 0.5) return t + 1;
+    return t;
+  } else {
+    if (fractional <= -0.5) return t - 1;
+    return t;
+  }
 }
 
-function floor (num){
-    let result =  num - trunc(num)
-    if (num<0){
-        if (result > 0){
-            return trunc(num)
-        }else {
-            trunc(num)
-        }
-    }else {
-        return trunc(num)
-    }
+function ceil(num) {
+  let t = trunc(num);
+  let fractional = num - t;
+
+  if (num >= 0) {
+    if (fractional > 0) return t + 1;
+    return t;
+  } else {
+    return t;
+  }
 }
-/*console.log(nums.map(round))
-console.log(nums.map(floor))
-console.log(nums.map(trunc))
-console.log(nums.map(ceil))*/
+
+function floor(num) {
+  let t = trunc(num);
+  let fractional = num - t;
+
+  if (num >= 0) {
+    return t;
+  } else {
+    if (fractional < 0) return t - 1;
+    return t;
+  }
+}
