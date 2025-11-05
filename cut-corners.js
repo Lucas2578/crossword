@@ -1,5 +1,16 @@
 function trunc (num) {
-    return parseInt(num)
+    let x = -12.34;
+    let entier = 0;
+    if (num >= 0) {
+      while (entier <= num) {
+        entier = entier + 1;
+      }
+      entier = entier - 1;
+    } else {
+      while (entier > num) {
+        entier = entier - 1;
+      }
+    }
 }
 function round (num) {
     if (num>0){
