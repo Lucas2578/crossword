@@ -14,10 +14,12 @@ function keepLast (str) {
     return str.slice(-2)
 }
 function keepFirstLast (str) {
-    if (str.length == 2){
-        return keepFirst(str)
-    }
-    return keepFirst(str) + keepLast(str)
+    // Use Array.slice: split the string to an array, take first 2 and last 2,
+    // then join them back into a string.
+    const chars = str.split('')
+    const firstTwo = chars.slice(0, 2)
+    const lastTwo = chars.slice(-2)
+    return firstTwo.concat(lastTwo).join('')
 }
 
 console.log(cutFirst('abcdef'))
