@@ -1,9 +1,11 @@
-function slice (strArr, Sindex, Eindex = strArr.length -1){
+function slice (strArr, Sindex, Eindex = strArr.length){
     let final = []
     let i = Sindex
-    while (i !== Eindex){
+    while (i < Eindex){
         final += strArr[i]
         i++
     }
     return final
 }
+
+console.log(slice('abcdef', 2))
