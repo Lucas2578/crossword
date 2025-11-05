@@ -1,14 +1,18 @@
 function slice (strArr, Sindex, Eindex = strArr.length){
     let final = []
     let i = Sindex
+    let end = Eindex
     if (Sindex<0){
         i = strArr.length + Sindex
     }
-    while (i < Eindex){
+    if (Eindex<0){
+        end = strArr.length + Eindex
+    }
+    while (i < end){
         final += strArr[i]
         i++
     }
     return final
 }
 
-console.log(slice('abcdef', -2))
+console.log(slice('abcdef', 0, -2))
