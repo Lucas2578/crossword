@@ -14,6 +14,9 @@ function keepLast (str) {
     return str.slice(-2)
 }
 function keepFirstLast (str) {
+    if (str.length == 2){
+        return keepFirst(str)
+    }
     return keepFirst(str) + keepLast(str)
 }
 
@@ -22,4 +25,4 @@ console.log(cutLast('abcdef'))
 console.log(cutFirstLast('abcdef'))
 console.log(keepFirst('abcdef'))
 console.log(keepLast('abcdef'))
-console.log(keepFirstLast('abcdef'))
+console.log(keepFirstLast('af'))
