@@ -1,5 +1,5 @@
-function indexOf (arr, val){
-    let i = 0
+function indexOf (arr, val, start = 0){
+    let i = start
     while (i< arr.length){
         if (arr[i] === val){
             return i
@@ -9,8 +9,8 @@ function indexOf (arr, val){
     return -1
 }
 
-function lastIndexOf (arr, val){
-    let i = arr.length
+function lastIndexOf (arr, val, start = arr.length){
+    let i = start
     while (i>0){
         if (arr[i] === val){
             return i
@@ -20,8 +20,8 @@ function lastIndexOf (arr, val){
     return -1
 }
 
-function includes (arr, val){
-    let i = 0
+function includes (arr, val , start = 0){
+    let i = start
     while (i< arr.length){
         if (arr[i] === val){
             return true
