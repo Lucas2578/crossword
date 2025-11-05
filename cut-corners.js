@@ -1,6 +1,3 @@
-const nums = [3.7, -3.7, 3.1, -3.1]
-
-
 function trunc (num) {
     return parseInt(num)
 }
