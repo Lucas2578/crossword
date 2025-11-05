@@ -1,5 +1,4 @@
 function trunc (num) {
-    let x = -12.34;
     let entier = 0;
     if (num >= 0) {
       while (entier <= num) {
@@ -11,6 +10,7 @@ function trunc (num) {
         entier = entier - 1;
       }
     }
+    return entier
 }
 function round (num) {
     if (num>0){
@@ -45,10 +45,10 @@ function ceil (num){
 }
 
 function floor (num){
-     let result =  num - trunc(num)
+    let result =  num - trunc(num)
     if (num<0){
-        if (result < 0){
-            return trunc(num)-1
+        if (result > 0){
+            return trunc(num)
         }else {
             trunc(num)
         }
@@ -56,7 +56,9 @@ function floor (num){
         return trunc(num)
     }
 }
-/*console.log(nums.map(round))
+const nums = [3.7, -3.7, 3.1, -3.1]
+
+console.log(nums.map(round))
 console.log(nums.map(floor))
 console.log(nums.map(trunc))
-console.log(nums.map(ceil))*/
+console.log(nums.map(ceil))
