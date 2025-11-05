@@ -14,7 +14,7 @@ function slice (strArr, Sindex, Eindex = strArr.length){
     }
 
     if (Array.isArray(strArr)){
-        return final.join("")
+        return final.split("")
     }
     return final
 }
