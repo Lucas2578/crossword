@@ -8,15 +8,18 @@ function slice (strArr, Sindex, Eindex = strArr.length){
     if (Eindex<0){
         end = strArr.length + Eindex
     }
-    while (i < end){
+    if (Array.isArray(strArr)){
+            while(i< end){
+            final.push(strArr[i])
+        i++
+        }
+    }else {
+        while (i < end){
         final += strArr[i]
         i++
     }
-
-    if (Array.isArray(strArr)){
-        return final.split("")
     }
     return final
 }
 
-console.log(slice('abcdef', 0, -2))
+console.log(slice([1, 2, 3, 4, 5, 6], 2))
