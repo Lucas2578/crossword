@@ -21,5 +21,3 @@ function slice (strArr, Sindex, Eindex = strArr.length){
     }
     return final
 }
-
-console.log(slice([1, 2, 3, 4, 5, 6], 2))
