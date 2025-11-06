@@ -9,7 +9,7 @@ function chunk (arr, num){
     if (IsEqual == true){
         while(i<arr.length){
             result.push(arr[i])
-            if (result.length == arr.length/num){
+            if (result.length == num){
                 final.push(result)
                 result = []
             }
@@ -19,7 +19,7 @@ function chunk (arr, num){
         i=0
         while(i<arr.length){
             result.push(arr[i])
-            if (result.length == Math.trunc(arr.length/num)){
+            if (result.length == num){
                 final.push(result)
                 result = []
             }
@@ -33,3 +33,4 @@ const test2 = [1,2,3,4,5,6,7,8,9,10]
 console.log(chunk(test2, 3))
 const test = [1,2,3,4,5,6,7,8,9]
 console.log(chunk(test, 3))
+console.log(chunk(['a', 'b', 'c', 'd'], 3))
