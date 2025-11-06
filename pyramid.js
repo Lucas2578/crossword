@@ -1,31 +1,13 @@
 function pyramid (str, num){
-    let i = 0
-    let y = 0
-    let nbrSpace = num-1
-    let result = ""
-    let repeat = 1
+  let result = "";
+  let repeat = 1;
+  let nbrSpace = num * 2 - 2; // more initial spacing for centered alignment
 
-    while(i<num){
-
-        let x = nbrSpace
-        while(x>0){
-            result+= " "
-            x--
-        }
-        while(y<repeat){
-            result += str
-            y++
-        }
-        if (i !== num-1){
-            result += "\n"
-        }
-        i++
-        y = 0
-        nbrSpace--
-        repeat = repeat +2
-    }
-    return result
+  for (let i = 0; i < num; i++) {
+    result += " ".repeat(nbrSpace) + str.repeat(repeat);
+    if (i !== num - 1) result += "\n";
+    nbrSpace -= 2;
+    repeat += 2;
+  }
+  return result;
 }
-
-console.log(pyramid("*",5))
-console.log(pyramid('{}', 12))
