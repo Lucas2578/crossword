@@ -16,7 +16,7 @@ function pyramid (str, num){
             result += str
             y++
         }
-        if (i !== num){
+        if (i !== num-1){
             result += "\n"
         }
         i++
