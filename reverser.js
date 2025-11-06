@@ -1,8 +1,8 @@
 function reverse (array) {
     let i = array.length -1
-    let final =  []
+    let final = ""
     while(i>=0){
-        final.push(array[i])
+        final += array[i]
         i--
     }
     return final
