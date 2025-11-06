@@ -82,12 +82,8 @@ function trunc(num) {
 function round(num) {
   const t = trunc(num);
   const diff = num - t;
-
-  if (num >= 0) {
-    return diff >= 0.5 ? t + 1 : t;
-  } else {
-    return diff <= -0.5 ? t - 1 : t;
-  }
+  if (num >= 0) return diff >= 0.5 ? t + 1 : t;
+  return diff <= -0.5 ? t - 1 : t;
 }
 
 function ceil(num) {
@@ -102,9 +98,8 @@ function floor(num) {
   return t;
 }
 
-// ✅ Test
 // const nums = [3.7, -3.7, 3.1, -3.1];
-// console.log("round:", nums.map(round)); // [ 4, -4, 3, -3 ]
-// console.log("floor:", nums.map(floor)); // [ 3, -4, 3, -4 ]
-// console.log("trunc:", nums.map(trunc)); // [ 3, -3, 3, -3 ]
-// console.log("ceil :", nums.map(ceil));  // [ 4, -3, 4, -3 ]
+// console.log("round:", nums.map(round));
+// console.log("floor:", nums.map(floor));
+// console.log("trunc:", nums.map(trunc));
+// console.log("ceil :", nums.map(ceil));
