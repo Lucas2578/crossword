@@ -16,7 +16,7 @@ function pyramid (str, num){
             result += str
             y++
         }
-        if (i !== num){
+        if (i !== num+1){
             result += "\n"
         }
         i++
@@ -28,3 +28,4 @@ function pyramid (str, num){
 }
 
 console.log(pyramid("*",5))
+console.log(pyramid('{}', 12))
