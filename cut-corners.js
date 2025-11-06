@@ -1,54 +1,62 @@
-function trunc(num) {
-  if (num >= 0) {
-    // cas positif : monter depuis 0 jusqu'à dépasser, puis reculer d'1
-    let entier = 0;
-    while (entier <= num) {
-      entier = entier + 1;
+function trunc (num) {
+        // Truncate toward zero (like Math.trunc)
+        let entier = 0;
+        if (num >= 0) {
+                // increment while next integer is still <= num
+                while (entier + 1 <= num) {
+                        entier = entier + 1;
+                }
+        } else {
+                // decrement while next integer is still >= num
+                while (entier - 1 >= num) {
+                        entier = entier - 1;
+                }
+        }
+        return entier
+}
+
+function round (num) {
+    // Round to nearest integer. Ties (.5) go toward +Infinity per JS Math.round
+    const t = trunc(num)
+    const diff = num - t
+    if (diff === 0) return t
+    if (diff > 0) {
+        // positive fractional part
+        if (diff < 0.5) return t
+        // diff >= 0.5 -> round up
+        return t + 1
+    } else {
+        // negative fractional part
+        const adiff = -diff
+        if (adiff < 0.5) return t
+        if (adiff > 0.5) return t - 1
+        // tie (adiff === 0.5): for negative numbers Math.round ties toward +Infinity => keep t
+        return t
     }
-    return entier - 1;
-  } else {
-    // cas négatif : travailler sur -num (valeur positive), puis remettre le signe
-    let pos = -num;         // valeur positive
-    let entierPos = 0;
-    while (entierPos <= pos) {
-      entierPos = entierPos + 1;
-    }
-    return - (entierPos - 1);
-  }
+    
 }
 
-function round(num) {
-  const t = trunc(num);
-  const fractional = num - t;
-
-  if (num >= 0) {
-    return (fractional >= 0.5) ? (t + 1) : t;
-  } else {
-    return (fractional <= -0.5) ? (t - 1) : t;
-  }
+function ceil (num){
+    // Small, clear implementation using trunc
+    const t = trunc(num)
+    if (num === t) return t
+    // if positive and has fractional part -> ceil is trunc + 1
+    if (num > 0) return t + 1
+    // negative numbers: trunc is already the ceiling
+    return t
 }
 
-function ceil(num) {
-  const t = trunc(num);
-  const fractional = num - t;
-
-  if (num >= 0) {
-    return (fractional > 0) ? (t + 1) : t;
-  } else {
-    // pour num négatif, trunc fait déjà ceil (vers zéro), donc c'est t
-    return t;
-  }
+function floor (num){
+    const t = trunc(num)
+    if (num === t) return t
+    // positive numbers: trunc is the floor
+    if (num > 0) return t
+    // negative numbers with fractional part: floor is trunc - 1
+    return t - 1
 }
 
-function floor(num) {
-  const t = trunc(num);
-  const fractional = num - t;
-
-  if (num >= 0) {
-    // pour num positif, trunc fait floor
-    return t;
-  } else {
-    // si fraction < 0 (i.e. il y a une partie fractionnaire) on doit descendre d'1
-    return (fractional < 0) ? (t - 1) : t;
-  }
-}
+/*const nums = [3, -3, 3, -3, 0]
+console.log(nums.map(round))
+console.log(nums.map(floor))
+console.log(nums.map(trunc))
+console.log(nums.map(ceil))*/
