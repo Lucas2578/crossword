@@ -1,6 +1,10 @@
 function trunc (num) {
-        // Truncate toward zero (like Math.trunc)
-        let entier = 0;
+    // Truncate toward zero (like Math.trunc)
+    // Guard against non-finite inputs (Infinity / -Infinity / NaN) which would
+    // otherwise make the loops infinite. Math.trunc returns the same values
+    // for these cases, so mirror that behavior.
+    if (!isFinite(num)) return num
+    let entier = 0;
         if (num >= 0) {
                 // increment while next integer is still <= num
                 while (entier + 1 <= num) {
