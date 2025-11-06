@@ -64,19 +64,21 @@
 // console.log(nums.map(ceil))
 
 function trunc(num) {
-  let entier = 0;
-
   if (num >= 0) {
+    let entier = 0;
+    // go up until adding 1 would exceed num
     while (entier + 1 <= num) {
-      entier = entier + 1;
+      entier += 1;
     }
+    return entier;
   } else {
+    let entier = 0;
+    // go down until subtracting 1 would go below num
     while (entier - 1 >= num) {
-      entier = entier - 1;
+      entier -= 1;
     }
+    return entier;
   }
-
-  return entier;
 }
 
 function round(num) {
@@ -98,7 +100,8 @@ function floor(num) {
   return t;
 }
 
-// const nums = [3.7, -3.7, 3.1, -3.1];
+// ✅ Test
+// const nums = [3.7, -3.7, 3.1, -3.1, 0.9, -0.9, 0, -0];
 // console.log("round:", nums.map(round));
 // console.log("floor:", nums.map(floor));
 // console.log("trunc:", nums.map(trunc));
