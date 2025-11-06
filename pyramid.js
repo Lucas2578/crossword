@@ -1,11 +1,11 @@
 function pyramid (str, num){
-    let i = 1
+    let i = 0
     let y = 0
     let nbrSpace = num-1
     let result = ""
     let repeat = 1
 
-    while(i<num+1){
+    while(i<num){
 
         let x = nbrSpace
         while(x>0){
