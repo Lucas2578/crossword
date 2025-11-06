@@ -1,7 +1,7 @@
 function nasa(n){
     let start = 1
     let result = ""
-    while(start !== n){
+    while(start < n+1){
         if(start%3 == 0 && start%5== 0) {
             result+= String("NASA")
         }else if(start%3 == 0){
@@ -11,9 +11,13 @@ function nasa(n){
         }else{
             result+= String(start)
         }
-        if (start != n){
+        if (start != n+1){
             result += " "
         }
         start++
     }
+    return result
 }
+
+
+console.log(nasa(15))
