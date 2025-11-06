@@ -5,7 +5,6 @@ function flat(array, depth = 1) {
 
   for (const item of array) {
     if (Array.isArray(item) && depth > 0) {
-      // On concatène le résultat du sous-tableau aplati
       result = result.concat(flat(item, depth - 1));
     } else {
       result.push(item);
