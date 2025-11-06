@@ -1,14 +1,19 @@
 function split (str, separator = null, end = null){
-    // Handle special cases first
-    if (separator === null) separator = ' '  // Default separator is space
+    let final = []
+    
+    // Handle empty string separator - split into characters
     if (separator === '') {
-        // Split into individual characters
-        return end ? str.split('').slice(0, end) : str.split('')
+        for (let i = 0; i < str.length && (end === null || final.length < end); i++) {
+            final.push(str[i])
+        }
+        return final
     }
+    
+    // Default separator is space
+    if (separator === null) separator = ' '
     
     let i = 0
     let starti = 0
-    let final = []
     let lenSep = separator.length
 
     while (i <= str.length && (end === null || final.length < end)) {
@@ -64,3 +69,6 @@ console.log(split('ee,ff,g,', ','))
 
 const elements = ["Feu", "Air", "Eau"];
 console.log(join(elements,"-"))
+
+
+console.log(split('Riad'))
