@@ -2,12 +2,16 @@ function split (str, separator = null, end = null){
     let i = 0
     let starti = 0
     let final = []
+    let lenSep = 1
+    if (separator.length !== 1){
+        lenSep = separator.length
+    }
     while(i < str.length &&  final.length !== end){
         if (separator === ""){
             final.push(str[i])
-        }else if (str[i] === separator){
+        }else if (str.slice(i,i+lenSep)=== separator){
             final.push(str.slice(starti,i))
-            starti = i+1
+            starti = i+lenSep
         }else if (i == str.length-1){
             final.push(str.slice(starti,i+1))
         }
@@ -33,6 +37,8 @@ function join (array, separator = null){
 
  const str = "The quick brown fox jumps over the lazy dog.";
 console.log(split(str," "))
+
+console.log(split('ggg - ddd - b', ' - '))
 
 const elements = ["Feu", "Air", "Eau"];
 console.log(join(elements,"-"))
