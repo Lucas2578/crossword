@@ -8,7 +8,7 @@ function triangle (str, num){
             result += str
             y++
         }
-        if (i !== num+1){
+        if (i !== num){
             result += "\n"
         }
         i++
