@@ -16,7 +16,9 @@ function pyramid (str, num){
             result += str
             y++
         }
-        result += "\n"
+        if (i !== num){
+            result += "\n"
+        }
         i++
         y = 0
         nbrSpace--
