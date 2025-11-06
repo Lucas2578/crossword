@@ -1,9 +1,17 @@
 function reverse (array) {
     let i = array.length -1
-    let final = ""
-    while(i>=0){
-        final += array[i]
-        i--
+    if (Array.isArray(value)){
+        let final = []
+        while(i>=0){
+            final.push(array[i])
+            i--
+         }
+    }else {
+        let final = ""
+        while(i>=0){
+            final += array[i]
+            i--
+        }
     }
     return final
 }
