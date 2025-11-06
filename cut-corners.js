@@ -102,8 +102,8 @@ function floor(num) {
 }
 
 // ✅ Test
-const nums = [3.7, -3.7, 3.1, -3.1];
-console.log("round:", nums.map(round)); // [ 4, -4, 3, -3 ]
-console.log("floor:", nums.map(floor)); // [ 3, -4, 3, -4 ]
-console.log("trunc:", nums.map(trunc)); // [ 3, -3, 3, -3 ]
-console.log("ceil :", nums.map(ceil));  // [ 4, -3, 4, -3 ]
+// const nums = [3.7, -3.7, 3.1, -3.1];
+// console.log("round:", nums.map(round)); // [ 4, -4, 3, -3 ]
+// console.log("floor:", nums.map(floor)); // [ 3, -4, 3, -4 ]
+// console.log("trunc:", nums.map(trunc)); // [ 3, -3, 3, -3 ]
+// console.log("ceil :", nums.map(ceil));  // [ 4, -3, 4, -3 ]
