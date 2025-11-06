@@ -62,6 +62,7 @@
 // console.log(nums.map(floor))
 // console.log(nums.map(trunc))
 // console.log(nums.map(ceil))
+
 function trunc(num) {
   let entier = 0;
 
@@ -70,7 +71,7 @@ function trunc(num) {
       entier = entier + 1;
     }
   } else {
-    while (entier - 1 > num) {
+    while (entier - 1 >= num) {
       entier = entier - 1;
     }
   }
