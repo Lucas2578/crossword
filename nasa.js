@@ -11,7 +11,7 @@ function nasa(n){
         }else{
             result+= String(start)
         }
-        if (start != n+1){
+        if (start != n){
             result += " "
         }
         start++
