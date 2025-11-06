@@ -5,14 +5,16 @@ function RNA (str){
         switch(str[i]){
             case  "G" :
                 result += "C"
+                break
             case "C":
                 result += "G"
+                break
             case "T":
                 result += "A"
+                break
             case "A" :
                 result+= "U"
-            default :
-                result+= str[i]
+                break
         }
         i++
     }
@@ -26,16 +28,22 @@ function DNA (str){
         switch(str[i]){
             case  "G" :
                 result += "C"
+                break
             case "C":
                 result += "G"
+                break
             case "A":
                 result += "T"
+                break
             case "U" :
                 result+= "A"
-            default :
-                result+= str[i]
+                break
+            // default :
+            //     result+= str[i]
         }
         i++
     }
     return result
 }
+
+console.log(RNA('TAGC'))
