@@ -57,12 +57,8 @@ function validCharsEmptyPuzzle(puzzle) {
     // If have invalid char
     for (let line of puzzle) {
         for (let char of line) {
-            for (let validChar of vars.validChars) {
-                if (char === validChar) {
-                    continue;
-                } else {
-                    throw new Error(vars.errorPuzzleIncorrectChar);
-                }
+            if (!vars.validChars.includes(char)) {
+                throw new Error(vars.errorPuzzleIncorrectChar);
             }
         }
     }
