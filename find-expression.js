@@ -12,3 +12,5 @@ function findExpression(target) {
 
   return search(1, '1');
 }
+
+console.log(findExpression(8))

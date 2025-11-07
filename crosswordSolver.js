@@ -16,26 +16,21 @@ function crosswordSolver(puzzle, word){
 }
 
 function parsePuzzle (Puzzle){
-    /*let map = new Map
-    let tableau 
-    let x = 0
-    let y = 0 
-    let i = 0
-    while(Puzzle[i]!= undefined)  {
-        if (emptyPuzzle[i] != '\n'){
-            tableau[x][y] = emptyPuzzle[i]
-            x ++
-        }else {
-            x=0
-            y++
-        }
-        i++
-    }
-    console.log(tableau)*/
     let tableauLigne = Puzzle.split('\n')
-    let finaltableau = tableauLigne[0].split("") 
+}
+function findSlots (tableauLigne){
+    let colones = tableauLigne.length
+    let ligne = tableauLigne[0].length
+    let slot = new Object
+
+    let col =0
+    let lig = 0
+    while(col<colones-1){
+        while(lig<ligne-1){
+            slot
+        }
+    }
     
-    console.log(finaltableau)
 }
 //console.log(emptyPuzzle[19])
 crosswordSolver(emptyPuzzle, words)
