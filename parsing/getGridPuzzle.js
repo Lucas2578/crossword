@@ -21,4 +21,4 @@ function getGridPuzzle(puzzle) {
     return gridPuzzle
 }
 
-export default getGridPuzzle;
+export { getGridPuzzle };

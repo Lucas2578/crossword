@@ -22,7 +22,6 @@ function crosswordSolver(puzzle, word){
     let PuzzleParse = parsePuzzle(puzzle)
     let slot = findSlots(PuzzleParse)
     console.log(slot)
-    
 }
 
 function parsePuzzle (Puzzle){

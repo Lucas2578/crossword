@@ -1,4 +1,5 @@
 import * as vars from '../variables.js';
+import { getGridPuzzle } from '../parsing/getGridPuzzle.js'
 
 /**
  * Checks if the puzzle have been a one letter around starting letter word
@@ -12,30 +13,25 @@ function availablePuzzle(puzzle) {
         for (let col = 0; col < puzzle[row].length; col++) {
             const current = puzzle[row][col]
             
+            // Skip if not a starter letter (1-9)
+            if (!vars.letterStarter.includes(current)) continue;
+            
             // ?. prevent crash if leave the grid
             const right = puzzle[row]?.[col + 1]
             const left = puzzle[row]?.[col - 1]
             const down = puzzle[row + 1]?.[col]
             const up = puzzle[row - 1]?.[col]
 
-            // If have only one word started by this slot
-            if (current == 1) {
-                const hasHorizontal = (right == 0 || left == 0)
-                const hasVertical = (down == 0 || up == 0)
-                
-                if (!hasHorizontal && !hasVertical) {
-                    throw new Error(vars.applyColor + vars.errorCantPlaceWord, vars.colorRed)
-                }
-            }
-
-            // If have two word started by this slot
-            if (current == 2) {
-                const hasHorizontal = (right == 0 || left == 0)
-                const hasVertical = (down == 0 || up == 0)
-                
-                if (!hasHorizontal || !hasVertical) {
-                    throw new Error(vars.applyColor + vars.errorCantPlaceWord, vars.colorRed)
-                }
+            // Check if at least one adjacent cell is a '0' or another starter (1-9)
+            const hasValidAdjacent = (
+                (right && right !== vars.letterNothing) || 
+                (left && left !== vars.letterNothing) || 
+                (down && down !== vars.letterNothing) || 
+                (up && up !== vars.letterNothing)
+            )
+            
+            if (!hasValidAdjacent) {
+                throw new Error(vars.errorCantPlaceWord)
             }
         }
     }

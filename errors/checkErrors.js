@@ -1,4 +1,5 @@
 import { availablePuzzle } from './availablePuzzle.js';
+import { parsePuzzle } from '../parsing/parsePuzzle.js'
 import * as validators from './validators.js';
 
 /**
@@ -9,15 +10,15 @@ import * as validators from './validators.js';
 function errorStartCheck(puzzle, words) {
     validators.validType(puzzle, words)
 
-    puzzle = parsePuzzle(puzzle)
+    const puzzleParsed = parsePuzzle(puzzle)
 
-    validators.validEmptyArgs(puzzle, words)
+    validators.validEmptyArgs(puzzleParsed, words)
     validators.validWords(words);
-    validators.validCharsEmptyPuzzle(puzzle);
-    validators.validLengthEmptyPuzzle(puzzle);
-    validators.validCanPlaceAllWords(puzzle, words);
+    validators.validCharsEmptyPuzzle(puzzleParsed);
+    validators.validLengthEmptyPuzzle(puzzleParsed);
+    validators.validCanPlaceAllWords(puzzleParsed, words);
     
-    availablePuzzle(puzzle);
+    availablePuzzle(puzzleParsed);
 }
 
 export { errorStartCheck };

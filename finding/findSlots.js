@@ -81,3 +81,5 @@ function findSlots (tableauLigne){
     }
     return FinalResult
 }
+
+export {findSlots} ;
