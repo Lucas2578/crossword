@@ -1,7 +1,13 @@
 // OPTIONS OF CROSSWORD
 export const validChars = "0123456789."
+export const typePuzzle = "String"
+export const typeWords = "Array"
 
 // Errors message from starting check
+export const errorPuzzleInvalidType = "The input puzzle is invalid type !"
+export const errorWordsInvalidType = "The input word list is invalid type !"
+export const errorPuzzleIsEmpty = "The input puzzle is empty !"
+export const errorWordsIsEmpty = "The input word list is empty !"
 export const errorWordHaveClone = "Error, this word list haven't unique words."
 export const errorPuzzleLengthLine = "Error, this puzzle haven't same length for all line."
 export const errorPuzzleUniqueChar = "Error, this puzzle have unique char."

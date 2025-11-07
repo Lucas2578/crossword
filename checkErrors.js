@@ -6,15 +6,21 @@ import * as vars from './variables.js';
 */
 
 function errorStartCheck(puzzle, words) {
+    validType(puzzle, words)
+
+    puzzle = puzzle.split('\n') // A remplacer par la fonction qui parse pour transf la string en array & check les lignes
+    validEmptyArgs(puzzle, words)
     validWords(words);
-    validLengthEmptyPuzzle(puzzle);
     validCharsEmptyPuzzle(puzzle);
+    validLengthEmptyPuzzle(puzzle);
     validCanPlaceAllWords(puzzle, words);
 }
 
 /**
  * Validates puzzle and words before solving
  * Runs multiple validation checks:
+ * - validType: Checks for types
+ * - validEmptyArgs: Checks for empty args
  * - validWords: Checks for duplicate words
  * - validLengthEmptyPuzzle: Ensures all lines have same length
  * - validCharsEmptyPuzzle: Verifies puzzle has more than one character type and if have a invalid character
@@ -25,6 +31,23 @@ function errorStartCheck(puzzle, words) {
  * @throws {Error} If any validation fails
 */
 
+function validType(puzzle, words) {
+    if (puzzle.constructor.name !== vars.typePuzzle) {
+        throw new Error(vars.errorPuzzleInvalidType);
+    }
+    if (words.constructor.name !== vars.typeWords) {
+        throw new Error(vars.errorWordsInvalidType);
+    }
+}
+
+function validEmptyArgs(puzzle, words) {
+    if (puzzle.length === 1 && puzzle[0] === '') {
+        throw new Error(vars.errorPuzzleIsEmpty);
+    }
+    if (words.length === 0) {
+        throw new Error(vars.errorWordsIsEmpty);
+    }
+}
 
 function validWords(words) {
     const wordsWithoutClone = new Set(words);

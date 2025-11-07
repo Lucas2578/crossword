@@ -1,21 +1,19 @@
 import { errorStartCheck } from './checkErrors.js';
 import * as vars from './variables.js';
 
-function crosswordSolver(emptyPuzzle, words) {
-    const emptyPuzzleTable = emptyPuzzle.split('\n')
-
+function crosswordSolver(puzzle, words) {
     try {
-        errorStartCheck(emptyPuzzleTable, words);
+        errorStartCheck(puzzle, words);
     } catch (error) {
         console.log(vars.applyColor + error.message, vars.colorRed);
         return;
     }
 }
 
-const emptyPuzzle = `2001
+const puzzle = `2001
 0..0
 1000
 0..0`
 const words = ['casa', 'alan', 'ciao', 'anta']
 
-crosswordSolver(emptyPuzzle, words)
+crosswordSolver(puzzle, words)
