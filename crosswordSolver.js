@@ -1,7 +1,7 @@
 import { errorStartCheck } from './errors/checkErrors.js';
 import { parsePuzzle } from './parsing/parsePuzzle.js'
 import { findSlots } from './finding/findSlots.js'
-import * as vars from './variables.js';
+import * as vars from './utils/variables.js';
 
 function crosswordSolver(puzzle, words) {
     try {

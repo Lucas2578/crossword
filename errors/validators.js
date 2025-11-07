@@ -1,4 +1,4 @@
-import * as vars from '../variables.js';
+import * as vars from '../utils/variables.js';
 
 /**
  * Validates puzzle and words before solving

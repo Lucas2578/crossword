@@ -1,4 +1,4 @@
-import * as vars from '../variables.js';
+import * as vars from '../utils/variables.js';
 import { getGridPuzzle } from '../parsing/getGridPuzzle.js'
 
 /**
