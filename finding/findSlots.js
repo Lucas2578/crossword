@@ -7,6 +7,7 @@ function findSlots (tableauLigne){
     let taille = 0
     let col =0
     let FinalResult = []
+    
     while(col<colones){
         let lig = 0
         while(lig<ligne){
@@ -30,16 +31,16 @@ function findSlots (tableauLigne){
                     }
                     taille = Wlength - col
                     start = [col,lig]
-                }else {
-                    return "erreur !"
                 }
                 slot = {
                     direction : direction,
                     start : start,
                     length : taille
                 }
-            FinalResult.push(slot)
-            }if (tableauLigne[col][lig] == 2){
+                FinalResult.push(slot)
+            }
+            
+            if (tableauLigne[col][lig] == 2){
                 if (tableauLigne[col][lig+1]== 0 && tableauLigne[col+1][lig]== 0){
                     direction = 'H'
                     let Wlength = lig
@@ -55,7 +56,6 @@ function findSlots (tableauLigne){
                         length : taille
                     }
                     FinalResult.push(slot)
-
 
                     direction = 'V'
                     Wlength = col
@@ -73,8 +73,6 @@ function findSlots (tableauLigne){
                         length : taille
                     }
                     FinalResult.push(slot)
-                }else{
-                    return "errerur !!"
                 }
             }
             lig++
