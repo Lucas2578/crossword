@@ -17,7 +17,7 @@ function errorStartCheck(puzzle, words) {
  * Runs multiple validation checks:
  * - validWords: Checks for duplicate words
  * - validLengthEmptyPuzzle: Ensures all lines have same length
- * - validCharsEmptyPuzzle: Verifies puzzle has more than one character type
+ * - validCharsEmptyPuzzle: Verifies puzzle has more than one character type and if have a invalid character
  * - validCanPlaceAllWords: Validates word count matches available positions
  * 
  * @param {string[]} puzzle - The puzzle grid
