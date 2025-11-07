@@ -1,4 +1,4 @@
-import { errorStartCheck } from './checkErrors.js';
+import { errorStartCheck } from './errors/checkErrors.js';
 import * as vars from './variables.js';
 
 function crosswordSolver(puzzle, words) {

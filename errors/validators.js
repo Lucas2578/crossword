@@ -1,20 +1,4 @@
-import * as vars from './variables.js';
-
-/**
- * Checks if the puzzle can be solved from the start
- * @throws {Error} If puzzle validation fails
-*/
-
-function errorStartCheck(puzzle, words) {
-    validType(puzzle, words)
-
-    puzzle = puzzle.split('\n') // A remplacer par la fonction qui parse pour transf la string en array & check les lignes
-    validEmptyArgs(puzzle, words)
-    validWords(words);
-    validCharsEmptyPuzzle(puzzle);
-    validLengthEmptyPuzzle(puzzle);
-    validCanPlaceAllWords(puzzle, words);
-}
+import * as vars from '../variables.js';
 
 /**
  * Validates puzzle and words before solving
@@ -31,7 +15,7 @@ function errorStartCheck(puzzle, words) {
  * @throws {Error} If any validation fails
 */
 
-function validType(puzzle, words) {
+export function validType(puzzle, words) {
     if (puzzle.constructor.name !== vars.typePuzzle) {
         throw new Error(vars.errorPuzzleInvalidType);
     }
@@ -40,7 +24,7 @@ function validType(puzzle, words) {
     }
 }
 
-function validEmptyArgs(puzzle, words) {
+export function validEmptyArgs(puzzle, words) {
     if (puzzle.length === 1 && puzzle[0] === '') {
         throw new Error(vars.errorPuzzleIsEmpty);
     }
@@ -49,7 +33,7 @@ function validEmptyArgs(puzzle, words) {
     }
 }
 
-function validWords(words) {
+export function validWords(words) {
     const wordsWithoutClone = new Set(words);
 
     if (wordsWithoutClone.size !== words.length) {
@@ -57,7 +41,7 @@ function validWords(words) {
     }
 }
 
-function validLengthEmptyPuzzle(puzzle) {
+export function validLengthEmptyPuzzle(puzzle) {
 
     for (let i = 0; i < puzzle.length - 1; i++) {
 
@@ -68,7 +52,7 @@ function validLengthEmptyPuzzle(puzzle) {
     }
 }
 
-function validCharsEmptyPuzzle(puzzle) {
+export function validCharsEmptyPuzzle(puzzle) {
 
     // If have unique char
     const haveUniqueChar = new Set(puzzle).size === 1;
@@ -87,7 +71,7 @@ function validCharsEmptyPuzzle(puzzle) {
     }
 }
 
-function validCanPlaceAllWords(puzzle, words) {
+export function validCanPlaceAllWords(puzzle, words) {
     let totalWord = 0;
 
     // For each number found in the puzzle, add it up and check if the total matches the number of words in the list
@@ -106,5 +90,3 @@ function validCanPlaceAllWords(puzzle, words) {
         throw new Error(vars.errorPuzzleCannotPlaceTooMuchWords);
     }
 }
-
-export { errorStartCheck };

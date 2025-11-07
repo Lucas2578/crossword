@@ -2,6 +2,9 @@
 export const validChars = "0123456789."
 export const typePuzzle = "String"
 export const typeWords = "Array"
+export const letterButNotStarter = "0"
+export const letterStarter = "123456789"
+export const letterNothing = "."
 
 // Errors message from starting check
 export const errorPuzzleInvalidType = "The input puzzle is invalid type !"
@@ -15,6 +18,7 @@ export const errorPuzzleIncorrectChar = "Error, this puzzle have invalid char."
 export const errorPuzzleCannotPlaceNotEnoughWords = "Error, the puzzle has more starting positions than words available."
 export const errorPuzzleCannotPlaceTooMuchWords = "Error, there are more words than starting positions on the puzzle."
 export const errorPuzzleImpossible = "This puzzle is impossible !"
+export const errorCantPlaceWord = `Error, ${letterButNotStarter} required on left, right, up or down to placed a word`
 
 // Colors
 export const applyColor = '%c'

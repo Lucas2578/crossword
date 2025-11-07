@@ -1,35 +1,3 @@
-/*const emptyPuzzle = 
-`2001
-0..0
-1000
-0..0`*/
-const emptyPuzzle = `...1...........
-..1000001000...
-...0....0......
-.1......0...1..
-.0....100000000
-100000..0...0..
-.0.....1001000.
-.0.1....0.0....
-.10000000.0....
-.0.0......0....
-.0.0.....100...
-...0......0....
-..........0....`
-const words = ['casa', 'alan', 'ciao', 'anta']
-
-function crosswordSolver(puzzle, word){
-    let PuzzleParse = parsePuzzle(puzzle)
-    let slot = findSlots(PuzzleParse)
-    console.log(slot)
-    
-}
-
-function parsePuzzle (Puzzle){
-    let tableauLigne = Puzzle.split('\n')
-    return tableauLigne
-}
-
 function findSlots (tableauLigne){
     let colones = tableauLigne.length
     let ligne = tableauLigne[0].length
@@ -115,5 +83,3 @@ function findSlots (tableauLigne){
     }
     return FinalResult
 }
-
-crosswordSolver(emptyPuzzle, words)
