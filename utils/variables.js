@@ -1,9 +1,9 @@
 // OPTIONS OF CROSSWORD
-export const validChars = "0123456789."
+export const validChars = "012."
 export const typePuzzle = "String"
 export const typeWords = "Array"
 export const letterButNotStarter = "0"
-export const letterStarter = "123456789"
+export const letterStarter = "12"
 export const letterNothing = "."
 
 // Errors message from starting check
