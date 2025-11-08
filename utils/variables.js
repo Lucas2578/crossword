@@ -19,6 +19,8 @@ export const errorPuzzleCannotPlaceNotEnoughWords = "Error, the puzzle has more 
 export const errorPuzzleCannotPlaceTooMuchWords = "Error, there are more words than starting positions on the puzzle."
 export const errorPuzzleImpossible = "This puzzle is impossible !"
 export const errorCantPlaceWord = `Error, ${letterButNotStarter} required on left, right, up or down to placed a word`
+export const errorMultipleSolutions = "Error, this crossword have a multiple solutions."
+export const errorHaventSolutions = "Error, this crossword haven't a solution."
 
 // Colors
 export const applyColor = '%c'

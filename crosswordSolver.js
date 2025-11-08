@@ -1,7 +1,7 @@
 import { errorStartCheck } from './errors/checkErrors.js';
 import { parsePuzzle } from './parsing/parsePuzzle.js'
 import { findSlots } from './finding/findSlots.js'
-import { solveWithUniquenessCheck } from './solver.js'
+import { solveWithUniquenessCheck } from './solver/solver.js';
 import * as vars from './utils/variables.js';
 
 function crosswordSolver(puzzle, words) {
@@ -17,7 +17,32 @@ function crosswordSolver(puzzle, words) {
     }
 }
 
-const puzzle = '2001\n0..0\n1000\n0..0'
-const words = ['aaab', 'aaac', 'aaad', 'aaae']
+const puzzle = `...1...........
+..1000001000...
+...0....0......
+.1......0...1..
+.0....100000000
+100000..0...0..
+.0.....1001000.
+.0.1....0.0....
+.10000000.0....
+.0.0......0....
+.0.0.....100...
+...0......0....
+..........0....`
+const words = [
+  'sun',
+  'sunglasses',
+  'suncream',
+  'swimming',
+  'bikini',
+  'beach',
+  'icecream',
+  'tan',
+  'deckchair',
+  'sand',
+  'seaside',
+  'sandals',
+].reverse()
 
 crosswordSolver(puzzle, words)
