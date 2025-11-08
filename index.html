@@ -1,1 +1,34 @@
-<script type="module" src="crosswordSolver.js"></script>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résolveur de Mots Croisés</title>
+    <link rel="stylesheet" href="./render/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 Mots Croisés</h1>
+        <p class="subtitle">Résolveur de Grilles</p>
+        
+        <div class="controls">
+            <button id="generateBtn">Résoudre la Grille</button>
+        </div>
+
+        <div id="message"></div>
+        <div id="consoleResult"></div>
+
+        <div class="crossword-wrapper" id="displayWrapper">
+            <div id="grid"></div>
+            <div class="words-section">
+                <div class="words-list">
+                    <h3>📜 Lexique</h3>
+                    <div id="wordsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./render/main.js"></script>
+</body>
+</html>

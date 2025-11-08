@@ -3,46 +3,22 @@ import { parsePuzzle } from './parsing/parsePuzzle.js'
 import { findSlots } from './finding/findSlots.js'
 import { solveWithUniquenessCheck } from './solver/solver.js';
 import * as vars from './utils/variables.js';
+import { puzzle, words } from './utils/data.js';
 
 function crosswordSolver(puzzle, words) {
-    try {
-        errorStartCheck(puzzle, words);
-        let PuzzleParse = parsePuzzle(puzzle)
-        let slot = findSlots(PuzzleParse)
-        let result = solveWithUniquenessCheck(PuzzleParse, words, slot)
-        console.log(result)
-    } catch (error) {
-        console.log(vars.applyColor + error.message, vars.colorRed);
-        return;
-    }
+    errorStartCheck(puzzle, words);
+    let PuzzleParse = parsePuzzle(puzzle)
+    let slot = findSlots(PuzzleParse)
+    let result = solveWithUniquenessCheck(PuzzleParse, words, slot)
+    return result
 }
 
-const puzzle = `...1...........
-..1000001000...
-...0....0......
-.1......0...1..
-.0....100000000
-100000..0...0..
-.0.....1001000.
-.0.1....0.0....
-.10000000.0....
-.0.0......0....
-.0.0.....100...
-...0......0....
-..........0....`
-const words = [
-  'sun',
-  'sunglasses',
-  'suncream',
-  'swimming',
-  'bikini',
-  'beach',
-  'icecream',
-  'tan',
-  'deckchair',
-  'sand',
-  'seaside',
-  'sandals',
-].reverse()
+try {
+    const result = crosswordSolver(puzzle, words)
 
-crosswordSolver(puzzle, words)
+        console.log(result)
+} catch (error) {
+    console.log(vars.applyColor + error.message, vars.colorRed);
+}
+
+export default crosswordSolver;
