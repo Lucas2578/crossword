@@ -1,85 +1,48 @@
 function findSlots (tableauLigne){
     let colones = tableauLigne.length
     let ligne = tableauLigne[0].length
-    let slot = new Object
-    let direction = ''
-    let start = []
-    let taille = 0
-    let col =0
     let FinalResult = []
     
-    while(col<colones){
-        let lig = 0
-        while(lig<ligne){
-            if (tableauLigne[col][lig] == 1){
-                if (tableauLigne[col][lig+1]== 0){
-                    direction = 'H'
-                    let Wlength = lig
-                    while(tableauLigne[col][Wlength] !== '.'&&tableauLigne[col][Wlength] !== undefined){
-                        Wlength++
-                    }
-                    taille = Wlength - lig
-                    start = [col,lig]
-                }else if (tableauLigne[col+1][lig]== 0){
-                    direction = 'V'
-                    let Wlength = col
-                    while(tableauLigne[Wlength][lig] !== '.'&&tableauLigne[Wlength][lig] !== undefined){
-                        Wlength++
-                        if(tableauLigne[Wlength] == undefined){
-                            break
-                        }
-                    }
-                    taille = Wlength - col
-                    start = [col,lig]
+    for(let col = 0; col < colones; col++){
+        for(let lig = 0; lig < ligne; lig++){
+            
+            if ((tableauLigne[col][lig] == '1' || tableauLigne[col][lig] == '2') && 
+                tableauLigne[col][lig+1] == '0' &&
+                (lig === 0 || tableauLigne[col][lig-1] === '.')) {
+                
+                let Wlength = lig;
+                while(tableauLigne[col][Wlength] !== '.' && tableauLigne[col][Wlength] !== undefined){
+                    Wlength++;
                 }
-                slot = {
-                    direction : direction,
-                    start : start,
-                    length : taille
-                }
-                FinalResult.push(slot)
+                let taille = Wlength - lig;
+                
+                FinalResult.push({
+                    direction: 'H',
+                    start: [col, lig],
+                    length: taille
+                });
             }
             
-            if (tableauLigne[col][lig] == 2){
-                if (tableauLigne[col][lig+1]== 0 && tableauLigne[col+1][lig]== 0){
-                    direction = 'H'
-                    let Wlength = lig
-                    while(tableauLigne[col][Wlength] !== '.'&&tableauLigne[col][Wlength] !== undefined){
-                        Wlength++
-                    }
-                    taille = Wlength - lig
-                    start = [col,lig]
-
-                    slot = {
-                        direction : direction,
-                        start : start,
-                        length : taille
-                    }
-                    FinalResult.push(slot)
-
-                    direction = 'V'
-                    Wlength = col
-                    while(tableauLigne[Wlength][lig] !== '.'&& tableauLigne[Wlength][lig] !== undefined){
-                        Wlength++
-                        if(tableauLigne[Wlength] == undefined){
-                            break
-                        }
-                    }
-                    taille = Wlength - col
-                    start = [col,lig]
-                    slot = {
-                        direction : direction,
-                        start : start,
-                        length : taille
-                    }
-                    FinalResult.push(slot)
+            if ((tableauLigne[col][lig] == '1' || tableauLigne[col][lig] == '2') && 
+                tableauLigne[col+1]?.[lig] == '0' &&
+                (col === 0 || tableauLigne[col-1]?.[lig] === '.')) {
+                
+                let Wlength = col;
+                while(tableauLigne[Wlength]?.[lig] !== '.' && tableauLigne[Wlength]?.[lig] !== undefined){
+                    Wlength++;
                 }
+                let taille = Wlength - col;
+                
+                FinalResult.push({
+                    direction: 'V',
+                    start: [col, lig],
+                    length: taille
+                });
             }
-            lig++
         }
-        col++
     }
-    return FinalResult
+
+    return FinalResult;
 }
 
-export {findSlots} ;
+export {findSlots};

@@ -1,6 +1,7 @@
-function solver(puzzle, words, slots, slotIndex = 0) {
+export function solver(puzzle, words, slots, slotIndex = 0, solutions = []) {
     if (slotIndex >= slots.length) {
-        return puzzle;
+        solutions.push(puzzle);
+        return null;
     }
     
     const currentSlot = slots[slotIndex];
@@ -9,43 +10,87 @@ function solver(puzzle, words, slots, slotIndex = 0) {
         const word = words[i];
         
         if (isValidPlacement(puzzle, currentSlot, word)) {
-            
             const newPuzzle = placeWord(puzzle, currentSlot, word);
-            const remainingWords = words.filter((_, index) => index !== i);
-            const result = solver(newPuzzle, remainingWords, slots, slotIndex + 1);
             
-            if (result) {
-                return result;
+            const remainingWords = [];
+            for (let j = 0; j < words.length; j++) {
+                if (words[j] !== words[i]) {
+                    remainingWords.push(words[j]);
+                }
+            }
+
+            solver(newPuzzle, remainingWords, slots, slotIndex + 1, solutions);
+            
+            if (solutions.length > 1) {
+                throw new Error("Plusieurs solutions trouvées gros sac à merde")
             }
         }
     }
-    
+
     return null;
 }
 
-function isValidPlacement(puzzle, slot, word) {
+export function solveWithUniquenessCheck(puzzle, words, slots) {
+    const solutions = [];
+    solver(puzzle, words, slots, 0, solutions);
+    
+    if (solutions.length === 0) {
+        throw new Error("Aucune solution trouvée");
+    }
+    
+    if (solutions.length > 1) {
+        throw new Error(`Plusieurs solutions trouvées (${solutions.length} solutions)`);
+    }
+    
+    return solutions[0];
+}
+
+function placeWord(puzzle, slot, word) {
+    const grid = puzzle.map(line => line.split(''));
+    const col = slot.start[1];
+    const lig = slot.start[0];
+    
+    if (slot.direction === 'H') {
+        for (let i = 0; i < word.length; i++) {
+            grid[lig][col + i] = word[i];
+        }
+    } else {
+        for (let i = 0; i < word.length; i++) {
+            grid[lig + i][col] = word[i];
+        }
+    }
+    
+    return grid.map(line => line.join(''));
+}
+
+export function isValidPlacement(puzzle, slot, word) {
     if (word.length !== slot.length) {
         return false;
     }
 
-    const startLine = slot.start[0]
-    const startCol = slot.start[1]
+    const col = slot.start[1];
+    const lig = slot.start[0];
 
     if (slot.direction === "H") {
         for (let i = 0; i < word.length; i++) {
-            const currentCol = startCol + i;
-            const cell = puzzle[startLine]?.[currentCol];
+            const currentCol = col + i;
+            const cell = puzzle[lig]?.[currentCol];
 
-            switch (cell) {
-                case "0", "1", "2":
-                    continue;
-                default:
-                    return false;
+            if (cell === undefined || cell === '.') {
+                return false;
+            }
+
+            if (cell === '0' || cell === '1' || cell === '2') {
+                continue;
+            }
+
+            if (cell !== word[i]) {
+                return false;
             }
         }
         
-        const before = puzzle[startLine]?.[startCol - 1];
-        const after = puzzle[startLine]?.[startCol + word.length];
+        const before = puzzle[lig]?.[col - 1];
+        const after = puzzle[lig]?.[col + word.length];
 
         if (before !== undefined && before !== '.') {
             return false;
@@ -60,19 +105,24 @@ function isValidPlacement(puzzle, slot, word) {
 
     if (slot.direction === "V") {
         for (let i = 0; i < word.length; i++) {
-            const currentRow = startLine + i;
-            const cell = puzzle[currentRow]?.[startCol];
+            const currentRow = lig + i;
+            const cell = puzzle[currentRow]?.[col];
 
-            switch (cell) {
-                case "0", "1", "2":
-                    continue;
-                default:
-                    return false;
+            if (cell === undefined || cell === '.') {
+                return false;
+            }
+
+            if (cell === '0' || cell === '1' || cell === '2') {
+                continue;
+            }
+
+            if (cell !== word[i]) {
+                return false;
             }
         }
         
-        const before = puzzle[startLine - 1]?.[startCol];
-        const after = puzzle[startLine + word.length]?.[startCol];
+        const before = puzzle[lig - 1]?.[col];
+        const after = puzzle[lig + word.length]?.[col];
 
         if (before !== undefined && before !== '.') {
             return false;

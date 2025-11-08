@@ -1,6 +1,7 @@
 import { errorStartCheck } from './errors/checkErrors.js';
 import { parsePuzzle } from './parsing/parsePuzzle.js'
 import { findSlots } from './finding/findSlots.js'
+import { solveWithUniquenessCheck } from './solver.js'
 import * as vars from './utils/variables.js';
 
 function crosswordSolver(puzzle, words) {
@@ -8,7 +9,8 @@ function crosswordSolver(puzzle, words) {
         errorStartCheck(puzzle, words);
         let PuzzleParse = parsePuzzle(puzzle)
         let slot = findSlots(PuzzleParse)
-        console.log(slot)
+        let result = solveWithUniquenessCheck(PuzzleParse, words, slot)
+        console.log(result)
     } catch (error) {
         console.log(vars.applyColor + error.message, vars.colorRed);
         return;
