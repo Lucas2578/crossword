@@ -35,7 +35,7 @@ function findSlots (tableauLigne){
                 slot = {
                     direction : direction,
                     start : start,
-                    length : taille
+                    lengthWord : taille
                 }
                 FinalResult.push(slot)
             }
@@ -53,7 +53,7 @@ function findSlots (tableauLigne){
                     slot = {
                         direction : direction,
                         start : start,
-                        length : taille
+                        lengthWord : taille
                     }
                     FinalResult.push(slot)
 
@@ -70,7 +70,7 @@ function findSlots (tableauLigne){
                     slot = {
                         direction : direction,
                         start : start,
-                        length : taille
+                        lengthWord : taille
                     }
                     FinalResult.push(slot)
                 }

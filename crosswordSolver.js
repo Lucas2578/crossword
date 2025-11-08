@@ -1,14 +1,19 @@
 import { errorStartCheck } from './errors/checkErrors.js';
 import { parsePuzzle } from './parsing/parsePuzzle.js'
 import { findSlots } from './finding/findSlots.js'
+import { solve } from './solver/backtraking.js'
+
 import * as vars from './utils/variables.js';
 
 function crosswordSolver(puzzle, words) {
     try {
         errorStartCheck(puzzle, words);
         let PuzzleParse = parsePuzzle(puzzle)
+        console.log(PuzzleParse)
         let slot = findSlots(PuzzleParse)
         console.log(slot)
+        let resolution = solve(0,PuzzleParse,words,slot)
+        console.log(resolution)
     } catch (error) {
         console.log(vars.applyColor + error.message, vars.colorRed);
         return;
