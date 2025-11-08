@@ -12,15 +12,45 @@ function crosswordSolver(puzzle, words) {
         console.log(PuzzleParse)
         let slot = findSlots(PuzzleParse)
         console.log(slot)
+        for (let r = 0; r < PuzzleParse.length; r++) {
+            for (let c = 0; c < PuzzleParse[r].length; c++) {
+                if (!isNaN(PuzzleParse[r][c])) { // si c’est un chiffre
+                    PuzzleParse[r][c] = '.'        // la case devient vide
+                }
+            }
+        }
         let resolution = solve(0,PuzzleParse,words,slot)
-        console.log(resolution)
+        let final = resolution.map(line => line.join('')).join('\n');
+        console.log(final)
+        //console.log(resolution)
     } catch (error) {
         console.log(vars.applyColor + error.message, vars.colorRed);
         return;
     }
 }
 
-const puzzle = '2001\n0..0\n1000\n0..0'
-const words = ['aaab', 'aaac', 'aaad', 'aaae']
+const puzzle = `..1.1..1...
+10000..1000
+..0.0..0...
+..1000000..
+..0.0..0...
+1000..10000
+..0.1..0...
+....0..0...
+..100000...
+....0..0...
+....0......`
+const words = [
+  'popcorn',
+  'fruit',
+  'flour',
+  'chicken',
+  'eggs',
+  'vegetables',
+  'pasta',
+  'pork',
+  'steak',
+  'cheese',
+]
 
 crosswordSolver(puzzle, words)

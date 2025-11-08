@@ -9,7 +9,7 @@
 */
 
 function parsePuzzle (Puzzle){
-    let tableauLigne = Puzzle.split('\n')
+    let tableauLigne = Puzzle.split('\n').map(line => line.split(''))
     return tableauLigne
 }
 
