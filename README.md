@@ -15,8 +15,8 @@ Un solveur de mots croisés robuste en JavaScript qui détecte automatiquement l
 ### Installation
 
 ```bash
-git clone https://github.com/ldunis/crossword-solver.git
-cd crossword-solver
+git clone https://github.com/Lucas2578/crossword.git
+cd crossword
 ```
 
 ### Utilisation
@@ -50,7 +50,7 @@ try {
 
 - `0` - Cellule vide (peut être remplie avec une lettre)
 - `.` - Cellule bloquée (aucune lettre autorisée)
-- `1-9` - Position de départ pour 1-9 mots
+- `1-2` - Position de départ pour 1-2 mots
 
 ### Règles
 
