@@ -1,47 +1,61 @@
-import * as vars from '../utils/variables.js';
+import { getGridPuzzle } from '../parsing/getGridPuzzle.js';
 
-function findSlots (tableauLigne){
-    let colones = tableauLigne.length
-    let ligne = tableauLigne[0].length
-    let FinalResult = []
-    
-    for(let col = 0; col < colones; col++){
-        for(let lig = 0; lig < ligne; lig++){
+function findSlots(tableauLigne) {
+    // Convertir en grille 2D si c'est un tableau de strings
+    if (typeof tableauLigne[0] === 'string') {
+        tableauLigne = getGridPuzzle(tableauLigne);
+    }
+
+    let colones = tableauLigne.length;
+    let ligne = tableauLigne[0].length;
+    let FinalResult = [];
+
+    function isStartH(c, l) {
+        return tableauLigne[c][l] !== '.' && (l === 0 || tableauLigne[c][l - 1] === '.');
+    }
+
+    function isStartV(c, l) {
+        return tableauLigne[c][l] !== '.' && (c === 0 || tableauLigne[c - 1][l] === '.');
+    }
+
+    let col = 0;
+    while (col < colones) {
+        let lig = 0;
+        while (lig < ligne) {
             
-            if (vars.letterStarter.includes(tableauLigne[col][lig]) && 
-                tableauLigne[col][lig+1] == vars.letterButNotStarter &&
-                (lig === 0 || tableauLigne[col][lig-1] === vars.letterNothing)) {
-                
-                let Wlength = lig;
-                while(tableauLigne[col][Wlength] !== vars.letterNothing && tableauLigne[col][Wlength] !== undefined){
+            // Recherche horizontale
+            if (isStartH(col, lig)) {
+                let Wlength = 0;
+                while (lig + Wlength < ligne && tableauLigne[col][lig + Wlength] !== '.') {
                     Wlength++;
                 }
-                let taille = Wlength - lig;
-                
-                FinalResult.push({
-                    direction: 'H',
-                    start: [col, lig],
-                    length: taille
-                });
+                if (Wlength >= 2) {
+                    FinalResult.push({
+                        direction: 'H',
+                        start: [col, lig],
+                        length: Wlength
+                    });
+                }
             }
-            
-            if (vars.letterStarter.includes(tableauLigne[col][lig]) && 
-                tableauLigne[col+1]?.[lig] == vars.letterButNotStarter &&
-                (col === 0 || tableauLigne[col-1]?.[lig] === vars.letterNothing)) {
-                
-                let Wlength = col;
-                while(tableauLigne[Wlength]?.[lig] !== vars.letterNothing && tableauLigne[Wlength]?.[lig] !== undefined){
+
+            // Recherche verticale
+            if (isStartV(col, lig)) {
+                let Wlength = 0;
+                while (col + Wlength < colones && tableauLigne[col + Wlength][lig] !== '.') {
                     Wlength++;
                 }
-                let taille = Wlength - col;
-                
-                FinalResult.push({
-                    direction: 'V',
-                    start: [col, lig],
-                    length: taille
-                });
+                if (Wlength >= 2) {
+                    FinalResult.push({
+                        direction: 'V',
+                        start: [col, lig],
+                        length: Wlength
+                    });
+                }
             }
+
+            lig++;
         }
+        col++;
     }
 
     return FinalResult;
