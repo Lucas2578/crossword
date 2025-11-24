@@ -119,7 +119,7 @@ Messages d'erreur clairs pour les problèmes courants :
 ## 👥 Auteurs
 
 - **Lucas Dunis** ([@ldunis](https://github.com/ldunis))
-- **Nathan Allain** ([@nallain](https://github.com/nallain))
+- **Nathan Allain** ([@nallain](https://github.com/nathuc69))
 
 ## 📝 Exemple
 
@@ -142,14 +142,6 @@ const words = ['sun', 'oa', 'tao'];
 taon
 ..o.
 ```
-
-## 🤝 Contribuer
-
-Les contributions, problèmes et demandes de fonctionnalités sont les bienvenus ! N'hésitez pas à consulter la [page des issues](../../issues).
-
-## 📄 Licence
-
-Ce projet est sous licence [MIT](LICENSE).
 
 ---
 
